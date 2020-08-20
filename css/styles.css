@@ -18,7 +18,8 @@ body{
     background: #fefefe;
     margin: auto auto;
     box-shadow: lightgrey 1px 1px 10px 5px;
-    padding: 0em 1em;
+    padding: 0em 0em;
+    padding-bottom: 6em;
     position: relative;
 }
 
@@ -55,7 +56,16 @@ body{
 }
 
 .currency-dropdown{
+    border-bottom: green 1px solid;
+    padding: 0em 0em 0.3em 0em !important;
+}
 
+.currency-name{
+    font-size: 0.9em;
+}
+.currency-row .col-md-5{
+    padding: 0em;
+    margin: 1em 1em;
 }
 
 .currency-detail{
@@ -67,7 +77,31 @@ body{
 }
 
 .currency-direction{
-    font-size: 0.75em;
+    font-size: 0.6em;
+    color: gray;
+}
+
+.currency-rate {
+    padding: 0em 0em;
+    margin : 0em 0em !important;
+}
+
+.currency-ratechange{
+    padding: 0em 0em;
+    margin: 0em !important;
+}
+
+.currency-rate-details{
+    margin: 0em 0em;
+}
+
+.currency-rate-title{
+    font-size: 0.6em;
+    color: gray;
+}
+
+.currency-rate .currency-rate-value{
+    font-weight: bold;
 }
 
 .currency-asset{
@@ -75,24 +109,19 @@ body{
     flex-direction: row;
 }
 
-.currency-dropdowns{
-    width: 70%;
+.currency-row{
+    width: 60%;
     margin: auto;
-    padding: 1em 0em;
-}
-
-.currency-inputs{
-    width: 70%;
-    margin: auto;
-    padding: 1em 0em;
+    padding: 0em 0em;
 }
 
 .currency-image{
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     object-fit: cover;
     border-radius: 50%;
 }
+
 
 .currency-dropdown-arrow{
     width: 0;
@@ -108,7 +137,7 @@ body{
 .currency-input{
     width: 100%;
     font-size: 5em;
-    padding: 0em 0.25em;
+    padding: 0em;
     border: none;
     caret-color: lightgreen;
 }
