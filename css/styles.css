@@ -56,10 +56,15 @@ body{
 }
 
 .currency-dropdown{
-    border-bottom: lightgreen 1px solid;
-    padding: 0em 0em 0.3em 0em !important;
+    padding: 0em;
     flex: 0 0 49%;
     max-width: 50%;
+}
+
+.currency-dropdown-selected{
+    padding: 0em 0em 0.3em 0em !important;
+    border-bottom: lightgreen 2px solid;
+    cursor: pointer;
 }
 
 .currency-name{
@@ -67,10 +72,12 @@ body{
 }
 
 .currency-inputs .col-md-5{
+    padding: 0em;
     flex: 0 0 49%;
     max-width: 50%;
 }
 .currency-price .col-md-5{
+    padding: 0em;
     flex: 0 0 49%;
     max-width: 50%;
 }
@@ -153,4 +160,50 @@ body{
 
 .currency-input:focus{
     outline: none;
+}
+
+.currency-dropdown-option{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.currency-dropdown-option .detail{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.currency-dropdown-option{
+    padding: 0.5em 0.5em;
+}
+
+.currency-dropdown-options{
+    position: absolute;
+    z-index: 1;
+    background: white;
+    width: inherit;
+    padding: 1em 0.75em 1em 0.75em;
+    box-shadow: lightgrey 1px 3px 5px 2px;
+}
+
+.detail .long-name{
+    padding-left: 1em;
+    font-size: 0.75em;
+    font-weight: bold;
+}
+
+.detail .currency-image{
+    align-self: center;
+}
+
+.detail{
+    align-items: center;
+}
+
+.short{
+    align-items: center;
+    font-size: 0.8em;
+    color: gray;
 }

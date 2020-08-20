@@ -4,6 +4,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
     
@@ -18,22 +19,138 @@
             </div>
             <div class="row currency-dropdowns currency-row">
                 <div class="col-md-5 currency-dropdown">
-                    <div class="currency-direction">From</div>
-                    <div class="currency-detail">
-                        <div class="currency-name">GBP - British Pound</div>
-                        <div class="currency-asset">
-                            <img src="./assets/india.png" class="currency-image"></img>
-                            <div class="currency-dropdown-arrow"></div>
+                    <div class="currency-dropdown-selected" id="fromDropdown">
+                        <div class="currency-direction">From</div>
+                        <div class="currency-detail">
+                            <div class="currency-name">GBP - British Pound</div>
+                            <div class="currency-asset">
+                                <img src="./assets/INR.png" class="currency-image"></img>
+                                <div class="currency-dropdown-arrow"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="currency-dropdown-options" id="fromOptions">
+                        <div class="currency-dropdown-option">
+                            <div class="detail">
+                                <img src="./assets/INR.png" class="currency-image"></img>
+                                <div class="long-name">Indian Rupee</div>
+                            </div>
+                            <div class="short">
+                                <div class="short-name">INR</div>
+                            </div>
+                        </div>
+                        <div class="currency-dropdown-option">
+                            <div class="detail">
+                                <img src="./assets/india.png" class="currency-image"></img>
+                                <div class="long-name">Indian Rupee</div>
+                            </div>
+                            <div class="short">
+                                <div class="short-name">INR</div>
+                            </div>
+                        </div>
+                        <div class="currency-dropdown-option">
+                            <div class="detail">
+                                <img src="./assets/india.png" class="currency-image"></img>
+                                <div class="long-name">Indian Rupee</div>
+                            </div>
+                            <div class="short">
+                                <div class="short-name">INR</div>
+                            </div>
+                        </div>
+                        <div class="currency-dropdown-option">
+                            <div class="detail">
+                                <img src="./assets/india.png" class="currency-image"></img>
+                                <div class="long-name">Indian Rupee</div>
+                            </div>
+                            <div class="short">
+                                <div class="short-name">INR</div>
+                            </div>
+                        </div>
+                        <div class="currency-dropdown-option">
+                            <div class="detail">
+                                <img src="./assets/india.png" class="currency-image"></img>
+                                <div class="long-name">Indian Rupee</div>
+                            </div>
+                            <div class="short">
+                                <div class="short-name">INR</div>
+                            </div>
+                        </div>
+                        <div class="currency-dropdown-option">
+                            <div class="detail">
+                                <img src="./assets/india.png" class="currency-image"></img>
+                                <div class="long-name">Indian Rupee</div>
+                            </div>
+                            <div class="short">
+                                <div class="short-name">INR</div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-5 currency-dropdown ">
-                    <div class="currency-direction">To</div>
-                    <div class="currency-detail">
-                        <div class="currency-name">GBP - British Pound</div>
-                        <div class="currency-asset">
-                            <img src="./assets/india.png" class="currency-image"></img>
-                            <div class="currency-dropdown-arrow"></div>
+                    <div class="currency-dropdown-selected" id="toDropdown">
+                        <div class="currency-direction">From</div>
+                        <div class="currency-detail">
+                            <div class="currency-name">GBP - British Pound</div>
+                            <div class="currency-asset">
+                                <img src="./assets/INR.png" class="currency-image"></img>
+                                <div class="currency-dropdown-arrow"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="currency-dropdown-options" id="toOptions">
+                        <div class="currency-dropdown-option">
+                            <div class="detail">
+                                <img src="./assets/india.png" class="currency-image"></img>
+                                <div class="long-name">Indian Rupee</div>
+                            </div>
+                            <div class="short">
+                                <div class="short-name">INR</div>
+                            </div>
+                        </div>
+                        <div class="currency-dropdown-option">
+                            <div class="detail">
+                                <img src="./assets/india.png" class="currency-image"></img>
+                                <div class="long-name">Indian Rupee</div>
+                            </div>
+                            <div class="short">
+                                <div class="short-name">INR</div>
+                            </div>
+                        </div>
+                        <div class="currency-dropdown-option">
+                            <div class="detail">
+                                <img src="./assets/india.png" class="currency-image"></img>
+                                <div class="long-name">Indian Rupee</div>
+                            </div>
+                            <div class="short">
+                                <div class="short-name">INR</div>
+                            </div>
+                        </div>
+                        <div class="currency-dropdown-option">
+                            <div class="detail">
+                                <img src="./assets/india.png" class="currency-image"></img>
+                                <div class="long-name">Indian Rupee</div>
+                            </div>
+                            <div class="short">
+                                <div class="short-name">INR</div>
+                            </div>
+                        </div>
+                        <div class="currency-dropdown-option">
+                            <div class="detail">
+                                <img src="./assets/india.png" class="currency-image"></img>
+                                <div class="long-name">Indian Rupee</div>
+                            </div>
+                            <div class="short">
+                                <div class="short-name">INR</div>
+                            </div>
+                        </div>
+                        <div class="currency-dropdown-option">
+                            <div class="detail">
+                                <img src="./assets/india.png" class="currency-image"></img>
+                                <div class="long-name">Indian Rupee</div>
+                            </div>
+                            <div class="short">
+                                <div class="short-name">INR</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -62,5 +179,7 @@
             </div>
         </div>
     </div>
-</body>
+
+    <script src="./js/script.js"></script>
+    </body>
 </html>
