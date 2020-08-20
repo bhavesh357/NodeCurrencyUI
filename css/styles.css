@@ -3,6 +3,12 @@ html{
     width: 100% ;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+  margin: 0;
+}
+
 body{
     background: #f1f3f1;
     height: 100%;
@@ -209,4 +215,12 @@ body{
     align-items: center;
     font-size: 0.8em;
     color: gray;
+}
+
+.change-positive{
+    color: green;
+}
+
+.change-negative{
+    color: red;
 }

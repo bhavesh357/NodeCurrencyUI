@@ -17,6 +17,7 @@ $("#toDropdown").on("click", () => {
 
 // currency-list
 let currencyArray;
+let currentFormula;
 
 $(document).ready( () => {
     
@@ -53,12 +54,25 @@ function getNewMultiplier(from,to){
     .then(data => {return data.json()})
     .then(res => {
         console.log(res);
+        currentFormula = res.value;
         $('#currencyRate').html(res.value);
+        let change= Number((currentFormula-res.previousValue).toFixed(4));
+        let currencyChange=$('#currencyChange');
+        if(change<0){
+            currencyChange.html(change*-1);
+            currencyChange.addClass('change-negative')
+            currencyChange.removeClass('change-positive');
+        }else{
+            currencyChange.html(change);
+            currencyChange.addClass('change-positive')
+            currencyChange.removeClass('change-negative');
+        }
+        
     })
     .catch(err => {
         return err
     });
-
+    
 }
 
 function loadDropdowns(){
@@ -90,6 +104,7 @@ let toSelected= $('#toDropdown');
 function loadSelectedCurrency(){
     fromSelected.html(fromValue+getSelectedHtml(currencyArray[0]));
     toSelected.html(toValue+getSelectedHtml(currencyArray[1]));
+    loadNewValues();
 }
 
 function getSelectedHtml(currency){
@@ -124,9 +139,25 @@ function findCurrency(name){
 }
 
 function loadNewValues(){
-    console.log();
     let fromSelectedValue=$(fromSelected.children()[1].children[0]).html().substring(0,3) ;
     let toSelectedValue= $(toSelected.children()[1].children[0]).html().substring(0,3) ;
     getNewMultiplier(fromSelectedValue,toSelectedValue);
 }
 
+$('#fromInput').on('input' , () => {
+    let value = $('#fromInput').val()*currentFormula;
+    if(value>0){
+        $('#toInput').val(Number((value).toFixed(4)));
+    }else{
+        $('#fromInput').val("");
+    }
+});
+
+$('#toInput').on('input' , () => {
+    let value = $('#toInput').val()/currentFormula;
+    if(value>0){
+        $('#fromInput').val(Number((value).toFixed(4)));
+    }else{
+        $('#toInput').val("");
+    }
+});

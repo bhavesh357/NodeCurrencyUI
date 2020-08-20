@@ -85,10 +85,10 @@
             </div>
             <div class="row currency-inputs  currency-row">
                 <div class="col-md-5">
-                    <input type="text" value="0" class="currency-input">
+                    <input type="number" min="0" placeholder="0" class="currency-input" id="fromInput">
                 </div>
                 <div class="col-md-5 ">
-                    <input type="text" value="0"  class="currency-input">
+                    <input type="number" min="0" placeholder="0"  class="currency-input" id="toInput">
                 </div>
             </div>
             <div class="row currency-price  currency-row">
@@ -100,7 +100,7 @@
                         </div>
                         <div class="col-md-6 currency-ratechange">
                             <div class="currency-rate-title">Currency Rate</div>
-                            <div class="currency-rate-value">0.0074 (0.09%)</div>
+                            <div class="currency-rate-value" id="currencyChange">0.0074 (0.09%)</div>
                         </div>
                     </div>
                 </div>
