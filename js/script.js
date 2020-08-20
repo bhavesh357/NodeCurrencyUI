@@ -1,5 +1,4 @@
 //setting the dropdown size
-console.log(document.getElementById('fromDropdown').clientWidth);
 document.getElementById('fromOptions').style.width=document.getElementById('fromDropdown').clientWidth+1+'px';
 document.getElementById('toOptions').style.width=document.getElementById('toDropdown').clientWidth+1+'px';
 
@@ -27,19 +26,44 @@ $(document).ready( () => {
         type: 'GET',
         success: (result) => {
             currencyArray=result;
-            console.log(currencyArray);
             loadDropdowns();
         },
         error: (error) => {
             console.log(error);
         } 
-    })
+    });
 });
+
+
+function getNewMultiplier(from,to){
+    console.log("in multiplier");
+    const converterUrl='http://localhost:3000/currency/convert';
+    let convertData={
+        'currencyOne': from,
+        'currencyTwo': to,
+    }
+    const otherParams={
+        headers:{
+            "content-type":"application/json; charset=UTF-8"
+        },
+        body: JSON.stringify(convertData),
+        method: "POST"
+    };
+    fetch(converterUrl,otherParams)
+    .then(data => {return data.json()})
+    .then(res => {
+        console.log(res);
+        $('#currencyRate').html(res.value);
+    })
+    .catch(err => {
+        return err
+    });
+
+}
 
 function loadDropdowns(){
     let dropdown = "";
     for(let i=0;i<currencyArray.length;i++){
-        console.log(currencyArray[i].shortName);
         let option = "<div class=\"currency-dropdown-option\" onclick=\"selectOption('"+currencyArray[i].shortName+"', this)\" >"+
         "<div class=\"detail\">"+
         "<img src=\"./assets/"+currencyArray[i].shortName+".png\" class=\"currency-image\"></img>"+
@@ -51,10 +75,8 @@ function loadDropdowns(){
         "</div>";
         dropdown+=option;
     }
-    console.log(dropdown);
     let fromDropdown = $('#fromOptions');
     let toDropdown= $('#toOptions');
-    console.log(fromDropdown);
     fromDropdown.html(dropdown);
     toDropdown.html(dropdown);
     loadSelectedCurrency();
@@ -67,12 +89,10 @@ let toSelected= $('#toDropdown');
 
 function loadSelectedCurrency(){
     fromSelected.html(fromValue+getSelectedHtml(currencyArray[0]));
-    console.log(getSelectedHtml(currencyArray[0]));
     toSelected.html(toValue+getSelectedHtml(currencyArray[1]));
 }
 
 function getSelectedHtml(currency){
-    console.log(currency);
     let selectedData="<div class=\"currency-detail\">"+
     "<div class=\"currency-name\">"+currency.shortName+" - "+currency.longName+"</div>"+
     "<div class=\"currency-asset\">"+
@@ -92,6 +112,7 @@ function selectOption(name, el){
         toSelected.html(toValue+getSelectedHtml(currency));
     }
     $("#"+$(el).parent()[0].id).toggle();
+    loadNewValues();
 }
 
 function findCurrency(name){
@@ -100,5 +121,12 @@ function findCurrency(name){
             return currencyArray[i];
         }
     }
+}
+
+function loadNewValues(){
+    console.log();
+    let fromSelectedValue=$(fromSelected.children()[1].children[0]).html().substring(0,3) ;
+    let toSelectedValue= $(toSelected.children()[1].children[0]).html().substring(0,3) ;
+    getNewMultiplier(fromSelectedValue,toSelectedValue);
 }
 
