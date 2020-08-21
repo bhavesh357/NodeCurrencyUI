@@ -59,11 +59,11 @@ function getNewMultiplier(from,to){
         let change= Number((currentFormula-res.previousValue).toFixed(4));
         let currencyChange=$('#currencyChange');
         if(change<0){
-            currencyChange.html(change*-1);
+            currencyChange.html("<img class='change-icon' src='assets/icons/triangle-down.svg' />"+change*-1);
             currencyChange.addClass('change-negative')
             currencyChange.removeClass('change-positive');
         }else{
-            currencyChange.html(change);
+            currencyChange.html("<img class='change-icon' src='assets/icons/triangle-up.svg' />"+change);
             currencyChange.addClass('change-positive')
             currencyChange.removeClass('change-negative');
         }
