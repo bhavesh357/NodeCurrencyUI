@@ -69,9 +69,30 @@ body{
 
 .currency-dropdown-selected{
     padding: 0em 0em 0.3em 0em !important;
-    border-bottom: lightgreen 2px solid;
+    border-bottom: lightgrey 2px solid;
     cursor: pointer;
+    -webkit-transition : all 500ms ease-out;
+    transition: all 500ms ease;
 }
+
+.currency-dropdown-selected::after{
+    content: '';
+    position: absolute;
+    bottom: 0%;
+    display: block;
+    padding: 0.3em 0em 0em 0em !important;
+    border-bottom: rgb(56, 197, 56) 2px solid;
+    width: 0%;
+    -webkit-transition : all 500ms ease-out;
+    transition: all 500ms ease;
+}
+
+.green-border::after{
+    width: 100%;
+    -webkit-transition : all 500ms ease-out;
+    transition: all 500ms ease;
+}
+
 
 .currency-name{
     font-size: 0.9em;

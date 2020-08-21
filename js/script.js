@@ -6,13 +6,17 @@ document.getElementById('toOptions').style.width=document.getElementById('toDrop
 let fromDropdown= $("#fromOptions");
 $("#fromDropdown").on("click", () => {
     toDropdown.hide();
+    $('#toDropdown').removeClass('green-border');
     fromDropdown.toggle(500);
+    $('#fromDropdown').toggleClass('green-border');
 });
 
 let toDropdown= $("#toOptions");
 $("#toDropdown").on("click", () => {
     fromDropdown.hide();
+    $('#fromDropdown').removeClass('green-border');
     toDropdown.toggle(500);
+    $('#toDropdown').toggleClass('green-border');
 });
 
 // currency-list
@@ -123,8 +127,10 @@ function selectOption(name, el){
     let currency = findCurrency(name);
     if($(el).parent()[0].id==='fromOptions'){
         fromSelected.html(fromValue+getSelectedHtml(currency));
+        $('#fromDropdown').removeClass('green-border');
     }else{
         toSelected.html(toValue+getSelectedHtml(currency));
+        $('#toDropdown').removeClass('green-border');
     }
     $("#"+$(el).parent()[0].id).toggle();
     loadNewValues();
