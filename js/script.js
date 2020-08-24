@@ -12,7 +12,7 @@ $(document).ready( () => {
         url: currencyUrl,
         type: 'GET',
         success: (result) => {
-            currencyArray=result;
+            currencyArray=result.data;
             loadDropdowns();
         },
         error: (error) => {
@@ -76,7 +76,7 @@ function getNewMultiplier(from,to){
         method: "POST"
     };
     fetch(converterUrl,otherParams)
-    .then(data => {return data.json()})
+    .then(data => {return data.json().data})
     .then(res => {
         console.log(res);
         currentFormula = res.value;
