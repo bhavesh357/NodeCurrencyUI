@@ -41,6 +41,18 @@ body{
     color: white;
 }
 
+.dropdown-arrow{
+    width: 8px;
+    margin: 0em 0.5em;
+    transform: rotate(0deg);
+    transition: all 0.3s ease;
+}
+
+.dropdown-arrow.rotated{
+    transform: rotate(180deg);
+    transition: all 0.3s ease;
+}
+
 .app-info{
     margin: 3em auto;
     height: min-content;

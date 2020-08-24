@@ -1,14 +1,13 @@
-//setting the dropdown size
-document.getElementById('fromOptions').style.width=document.getElementById('fromDropdown').clientWidth+1+'px';
-document.getElementById('toOptions').style.width=document.getElementById('toDropdown').clientWidth+1+'px';
 
 //adding dropdown toggle code
+
 let fromDropdown= $("#fromOptions");
 $("#fromDropdown").on("click", () => {
     toDropdown.hide();
     $('#toDropdown').removeClass('green-border');
     fromDropdown.toggle(500);
     $('#fromDropdown').toggleClass('green-border');
+    $('#fromArrow').toggleClass('rotated');
 });
 
 let toDropdown= $("#toOptions");
@@ -17,6 +16,7 @@ $("#toDropdown").on("click", () => {
     $('#fromDropdown').removeClass('green-border');
     toDropdown.toggle(500);
     $('#toDropdown').toggleClass('green-border');
+    $('#toArrow').toggleClass('rotated');
 });
 
 // currency-list
@@ -41,7 +41,6 @@ $(document).ready( () => {
 
 
 function getNewMultiplier(from,to){
-    console.log("in multiplier");
     const converterUrl='http://localhost:3000/currency/convert';
     let convertData={
         'currencyOne': from,
@@ -116,7 +115,7 @@ function getSelectedHtml(currency){
     "<div class=\"currency-name\">"+currency.shortName+" - "+currency.longName+"</div>"+
     "<div class=\"currency-asset\">"+
     "<img src=\"./assets/"+currency.shortName+".png\" class=\"currency-image\"></img>"+
-    "<div class=\"currency-dropdown-arrow\"></div>"+
+    "<img src=\"./assets/icons/dropdown-arrow.svg\" alt=\"dropdown\" id=\"fromArrow\" class=\"dropdown-arrow\">"+
     "</div></div></div>";
     return selectedData;
 }
@@ -128,9 +127,11 @@ function selectOption(name, el){
     if($(el).parent()[0].id==='fromOptions'){
         fromSelected.html(fromValue+getSelectedHtml(currency));
         $('#fromDropdown').removeClass('green-border');
+        $('#fromArrow').removeClass('rotated');
     }else{
         toSelected.html(toValue+getSelectedHtml(currency));
         $('#toDropdown').removeClass('green-border');
+        $('#toArrow').toggleClass('rotated');
     }
     $("#"+$(el).parent()[0].id).toggle();
     loadNewValues();
