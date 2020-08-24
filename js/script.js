@@ -65,8 +65,8 @@ $(document).ready( () => {
 function getNewMultiplier(from,to){
     const converterUrl='http://localhost:3000/currency/convert';
     let convertData={
-        'currencyOne': from,
-        'currencyTwo': to,
+        'fromCurrency': from,
+        'toCurrency': to,
     }
     const otherParams={
         headers:{
@@ -146,11 +146,11 @@ function selectOption(name, el){
     console.log($(el).parent()[0].id);
     let currency = findCurrency(name);
     if($(el).parent()[0].id==='fromOptions'){
-        fromSelected.html(fromValue+getSelectedHtml(currency));
+        fromSelected.html(getSelectedHtml(currency,"from"));
         $('#fromDropdown').removeClass('green-border');
         $('#fromArrow').removeClass('rotated');
     }else{
-        toSelected.html(toValue+getSelectedHtml(currency));
+        toSelected.html(getSelectedHtml(currency,"to"));
         $('#toDropdown').removeClass('green-border');
         $('#toArrow').toggleClass('rotated');
     }
