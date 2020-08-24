@@ -121,23 +121,22 @@ function loadDropdowns(){
     loadSelectedCurrency();
 }
 
-let fromValue ="<div class=\"currency-direction\">From</div>";
-let toValue ="<div class=\"currency-direction\">To</div>";
 let fromSelected= $('#fromDropdown');
 let toSelected= $('#toDropdown');
 
 function loadSelectedCurrency(){
-    fromSelected.html(fromValue+getSelectedHtml(currencyArray[0]));
-    toSelected.html(toValue+getSelectedHtml(currencyArray[1]));
+    fromSelected.html(getSelectedHtml(currencyArray[0],"from"));
+    toSelected.html(getSelectedHtml(currencyArray[1],"to"));
     loadNewValues();
 }
 
-function getSelectedHtml(currency){
-    let selectedData="<div class=\"currency-detail\">"+
+function getSelectedHtml(currency,side){
+    let selectedData="<div class=\"currency-direction\">"+side.charAt(0).toUpperCase() + side.slice(1)+"</div>"+
+    "<div class=\"currency-detail\">"+
     "<div class=\"currency-name\">"+currency.shortName+" - "+currency.longName+"</div>"+
     "<div class=\"currency-asset\">"+
     "<img src=\"./assets/"+currency.shortName+".png\" class=\"currency-image\"></img>"+
-    "<img src=\"./assets/icons/dropdown-arrow.svg\" alt=\"dropdown\" id=\"fromArrow\" class=\"dropdown-arrow\">"+
+    "<img src=\"./assets/icons/dropdown-arrow.svg\" alt=\"dropdown\" id=\""+side+"Arrow\" class=\"dropdown-arrow\">"+
     "</div></div></div>";
     return selectedData;
 }
