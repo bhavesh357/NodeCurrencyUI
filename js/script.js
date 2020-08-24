@@ -1,23 +1,5 @@
 
-//adding dropdown toggle code
 
-let fromDropdown= $("#fromOptions");
-$("#fromDropdown").on("click", () => {
-    toDropdown.hide();
-    $('#toDropdown').removeClass('green-border');
-    fromDropdown.toggle(500);
-    $('#fromDropdown').toggleClass('green-border');
-    $('#fromArrow').toggleClass('rotated');
-});
-
-let toDropdown= $("#toOptions");
-$("#toDropdown").on("click", () => {
-    fromDropdown.hide();
-    $('#fromDropdown').removeClass('green-border');
-    toDropdown.toggle(500);
-    $('#toDropdown').toggleClass('green-border');
-    $('#toArrow').toggleClass('rotated');
-});
 
 // currency-list
 let currencyArray;
@@ -36,6 +18,46 @@ $(document).ready( () => {
         error: (error) => {
             console.log(error);
         } 
+    });
+    
+    
+    
+    $('#fromInput').on('input' , () => {
+        let value = $('#fromInput').val()*currentFormula;
+        if(value>0){
+            $('#toInput').val(Number((value).toFixed(4)));
+        }else{
+            $('#fromInput').val("");
+        }
+    });
+    
+    $('#toInput').on('input' , () => {
+        let value = $('#toInput').val()/currentFormula;
+        if(value>0){
+            $('#fromInput').val(Number((value).toFixed(4)));
+        }else{
+            $('#toInput').val("");
+        }
+    });
+    
+    //adding dropdown toggle code
+    
+    let fromDropdown= $("#fromOptions");
+    $("#fromDropdown").on("click", () => {
+        toDropdown.hide();
+        $('#toDropdown').removeClass('green-border');
+        fromDropdown.toggle(500);
+        $('#fromDropdown').toggleClass('green-border');
+        $('#fromArrow').toggleClass('rotated');
+    });
+    
+    let toDropdown= $("#toOptions");
+    $("#toDropdown").on("click", () => {
+        fromDropdown.hide();
+        $('#fromDropdown').removeClass('green-border');
+        toDropdown.toggle(500);
+        $('#toDropdown').toggleClass('green-border');
+        $('#toArrow').toggleClass('rotated');
     });
 });
 
@@ -151,20 +173,3 @@ function loadNewValues(){
     getNewMultiplier(fromSelectedValue,toSelectedValue);
 }
 
-$('#fromInput').on('input' , () => {
-    let value = $('#fromInput').val()*currentFormula;
-    if(value>0){
-        $('#toInput').val(Number((value).toFixed(4)));
-    }else{
-        $('#fromInput').val("");
-    }
-});
-
-$('#toInput').on('input' , () => {
-    let value = $('#toInput').val()/currentFormula;
-    if(value>0){
-        $('#fromInput').val(Number((value).toFixed(4)));
-    }else{
-        $('#toInput').val("");
-    }
-});
