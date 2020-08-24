@@ -76,12 +76,12 @@ function getNewMultiplier(from,to){
         method: "POST"
     };
     fetch(converterUrl,otherParams)
-    .then(data => {return data.json().data})
+    .then(data => {return data.json()})
     .then(res => {
-        console.log(res);
-        currentFormula = res.value;
-        $('#currencyRate').html(res.value);
-        let change= Number((currentFormula-res.previousValue).toFixed(4));
+        console.log(res.data);
+        currentFormula = res.data.value;
+        $('#currencyRate').html(res.data.value);
+        let change= Number((currentFormula-res.data.previousValue).toFixed(4));
         let currencyChange=$('#currencyChange');
         if(change<0){
             currencyChange.html("<img class='change-icon' src='assets/icons/triangle-down.svg' />"+change*-1);
